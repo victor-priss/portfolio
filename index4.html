@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Портфолио системного аналитика</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <style>
+      :root {
+        --primary-color: #2C3E50;
+        --secondary-color: #3498DB;
+        --accent-color: #E74C3C;
+        --light-color: #ECF0F1;
+        --dark-color: #2C3E50;
+      }
+      
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+      }
+      
+      /* Navigation */
+      .navbar {
+        background-color: var(--primary-color) !important;
+        padding: 15px 0;
+        transition: all 0.3s;
+      }
+      
+      .navbar-brand {
+        font-weight: 700;
+        color: white !important;
+        font-size: 1.5rem;
+      }
+      
+      .nav-link {
+        color: white !important;
+        font-weight: 500;
+        margin: 0 10px;
+      }
+      
+      .nav-link:hover {
+        color: var(--secondary-color) !important;
+      }
+      
+      /* Hero Section */
+      .hero-area {
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+        color: white;
+        padding: 150px 0 100px;
+        text-align: center;
+      }
+      
+      .profile-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid white;
+        margin-bottom: 20px;
+      }
+      
+      .hero-title {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+        opacity: 0.9;
+      }
+      
+      /* Sections */
+      .section-padding {
+        padding: 80px 0;
+      }
+      
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+        font-weight: 700;
+        color: var(--primary-color);
+        position: relative;
+      }
+      
+      .section-title:after {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: var(--secondary-color);
+      }
+      
+      /* About Section */
+      .about-photo {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      
+      .about-image {
+        max-width: 300px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      
+      /* Skills Section */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-top: 40px;
+      }
+      
+      .skill-category {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        border-left: 4px solid var(--secondary-color);
+      }
+      
+      .skill-category h4 {
+        color: var(--primary-color);
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+      }
+      
+      .skills-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+      
+      .skills-list li {
+        padding: 8px 0;
+        border-bottom: 1px solid #f0f0f0;
+        position: relative;
+        padding-left: 20px;
+      }
+      
+      .skills-list li:before {
+        content: '▸';
+        position: absolute;
+        left: 0;
+        color: var(--secondary-color);
+        font-weight: bold;
+      }
+      
+      .skills-list li:last-child {
+        border-bottom: none;
+      }
+
+      /* Filter Section */
+      .filter-section {
+        background: white;
+        padding: 25px;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        margin-bottom: 40px;
+        border: 1px solid #f0f0f0;
+      }
+
+      .filter-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .filter-btn {
+        background: var(--light-color);
+        border: 2px solid var(--light-color);
+        padding: 10px 20px;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      .filter-btn:hover {
+        background: var(--secondary-color);
+        color: white;
+        border-color: var(--secondary-color);
+        transform: translateY(-2px);
+      }
+
+      .filter-btn.active {
+        background: var(--secondary-color);
+        color: white;
+        border-color: var(--secondary-color);
+      }
+
+      .year-filter {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .year-btn {
+        background: var(--light-color);
+        border: 2px solid var(--light-color);
+        padding: 8px 16px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+
+      .year-btn:hover {
+        background: var(--accent-color);
+        color: white;
+        border-color: var(--accent-color);
+        transform: translateY(-2px);
+      }
+
+      .year-btn.active {
+        background: var(--accent-color);
+        color: white;
+        border-color: var(--accent-color);
+      }
+
+      .category-tag {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--secondary-color), #2980B9);
+        color: white;
+        padding: 6px 14px;
+        border-radius: 15px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .year-badge {
+        background: linear-gradient(135deg, var(--accent-color), #C0392B);
+        color: white;
+        padding: 6px 14px;
+        border-radius: 15px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      
+      /* Project Cards */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+        gap: 30px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .project-card {
+        background: white;
+        border-radius: 16px;
+        padding: 30px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        border: 1px solid #f0f0f0;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        min-height: 500px;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+      }
+
+      .project-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+      }
+
+      .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+      }
+
+      .project-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 20px;
+        flex-shrink: 0;
+      }
+
+      .project-title {
+        color: var(--primary-color);
+        margin-bottom: 15px;
+        font-weight: 700;
+        font-size: 1.3rem;
+        line-height: 1.4;
+        flex: 1;
+        margin-right: 15px;
+      }
+
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        flex-shrink: 0;
+      }
+
+      .project-meta {
+        color: #666;
+        margin-bottom: 20px;
+        font-size: 0.95rem;
+        flex-shrink: 0;
+        line-height: 1.5;
+      }
+
+      .project-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .project-challenge,
+      .project-actions,
+      .project-result {
+        margin-bottom: 0;
+      }
+
+      .project-card h4 {
+        color: var(--secondary-color);
+        margin: 0 0 12px 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      .project-card p {
+        margin-bottom: 12px;
+        line-height: 1.6;
+      }
+
+      .project-card ul {
+        margin-bottom: 12px;
+        padding-left: 20px;
+      }
+
+      .project-card li {
+        margin-bottom: 8px;
+        line-height: 1.5;
+      }
+
+      .project-link {
+        display: inline-flex;
+        align-items: center;
+        margin-top: auto;
+        padding-top: 20px;
+        color: var(--accent-color);
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.3s;
+        flex-shrink: 0;
+        border-top: 1px solid #f0f0f0;
+      }
+
+      .project-link:hover {
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+
+      .project-link i {
+        margin-left: 8px;
+        transition: transform 0.3s;
+      }
+
+      .project-link:hover i {
+        transform: translateX(4px);
+      }
+      
+      /* Contact Section */
+      .contact-info {
+        margin-top: 30px;
+      }
+      
+      .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 15px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s;
+      }
+      
+      .contact-item:hover {
+        transform: translateY(-5px);
+      }
+      
+      .contact-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, var(--secondary-color), #2980B9);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+        color: white;
+        font-size: 1.2rem;
+      }
+      
+      /* Footer */
+      footer {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 40px 0;
+        text-align: center;
+      }
+      
+      .social-links {
+        margin-bottom: 25px;
+      }
+      
+      .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: white;
+        margin: 0 10px;
+        font-size: 1.3rem;
+        transition: all 0.3s;
+      }
+      
+      .social-links a:hover {
+        background: var(--secondary-color);
+        color: white;
+        transform: translateY(-5px);
+      }
+      
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2.2rem;
+        }
+        
+        .hero-subtitle {
+          font-size: 1.2rem;
+        }
+        
+        .section-padding {
+          padding: 60px 0;
+        }
+        
+        .profile-image {
+          width: 120px;
+          height: 120px;
+        }
+
+        .project-header {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .filter-buttons, .year-filter {
+          justify-content: center;
+        }
+        
+        .projects-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        
+        .project-card {
+          min-height: auto;
+          padding: 25px;
+        }
+        
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .project-card {
+          padding: 20px;
+        }
+        
+        .filter-section {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body data-spy="scroll" data-target=".navbar" data-offset="50">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Системный аналитик</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#about">Обо мне</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#skills">Навыки</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#cases">Кейсы</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Контакты</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <img src="images/my_photo.jpg" alt="Ваше фото" class="profile-image">
+            <h1 class="hero-title">Виктор Прись</h1>
+            <p class="hero-subtitle">Системный аналитик и архитектор решений</p>
+            <p>Специализируюсь на анализе сложных систем, стратегическом прогнозировании и разработке эффективных бизнес-решений</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding">
+      <div class="container">
+        <h2 class="section-title">Обо мне</h2>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="about-photo">
+              <img src="https://via.placeholder.com/300/3498DB/FFFFFF?text=Профессиональное+фото" alt="Ваше профессиональное фото" class="about-image">
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <p>Я - системный аналитик с более чем 10-летним опытом работы в области анализа сложных систем в условиях хаоса и нестабильности, проектирования архитектурных решений и стратегического планирования. Специализируюсь на выявлении системных проблем и разработке эффективных решений, основанных на глубоком анализе данных и понимании бизнес-контекста.</p>
+            
+            <p>Мой подход сочетает в себе системное мышление, аналитические методы и практический опыт внедрения решений в различных отраслях, включая дипломатию, реальную экономику и производство. Верю, что качественный анализ — это основа успешной цифровой трансформации и устойчивого развития бизнеса.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section-padding bg-light">
+      <div class="container">
+        <h2 class="section-title">Навыки и компетенции</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h4>Аналитические компетенции</h4>
+            <ul class="skills-list">
+              <li>Системный анализ и моделирование сложных систем</li>
+              <li>Стратегическое и опережающее прогнозирование</li>
+              <li>Кризисное управление и работа в условиях экстремальной неопределенности</li>
+              <li>Глубокий отраслевой анализ (Deep Industry Expertise)</li>
+              <li>Работа с данными в условиях ограничений (OSINT/Advanced Prompting)</li>
+            </ul>
+          </div>
+          
+          <div class="skill-category">
+            <h4>Архитектурные компетенции</h4>
+            <ul class="skills-list">
+              <li>Проектирование организационных структур и институтов (Architecting Governance)</li>
+              <li>Системная инженерия и проектирование сложных решений</li>
+              <li>Оптимизация бизнес-процессов и операционная эффективность</li>
+              <li>Разработка и внедрение антикризисных программ</li>
+            </ul>
+          </div>
+          
+          <div class="skill-category">
+            <h4>Стратегические компетенции</h4>
+            <ul class="skills-list">
+              <li>Политический анализ и идеологическое проектирование</li>
+              <li>Лидерство, фасилитация и управление изменениями</li>
+              <li>Скорость анализа и принятия решений</li>
+              <li>Междисциплинарный подход и синтез знаний</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cases Section -->
+    <section id="cases" class="section-padding">
+      <div class="container">
+        <h2 class="section-title">Аналитические кейсы</h2>
+        
+        <!-- Filter Section -->
+        <div class="filter-section">
+          <div class="row">
+            <div class="col-md-12">
+              <h5>Фильтр по темам:</h5>
+              <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Все темы</button>
+                <button class="filter-btn" data-filter="экономика">Экономика</button>
+                <button class="filter-btn" data-filter="политика">Политика</button>
+                <button class="filter-btn" data-filter="образование">Образование</button>
+                <button class="filter-btn" data-filter="безопасность">Безопасность</button>
+                <button class="filter-btn" data-filter="производство">Производство</button>
+                <button class="filter-btn" data-filter="логистика">Логистика</button>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <h5>Фильтр по годам:</h5>
+              <div class="year-filter">
+                <button class="year-btn active" data-year="all">Все годы</button>
+                <button class="year-btn" data-year="2025">2025</button>
+                <button class="year-btn" data-year="2024">2024</button>
+                <button class="year-btn" data-year="2022">2022</button>
+                <button class="year-btn" data-year="2019">2019</button>
+                <button class="year-btn" data-year="2018">2018</button>
+                <button class="year-btn" data-year="2017">2017</button>
+                <button class="year-btn" data-year="2015">2015</button>
+                <button class="year-btn" data-year="2014">2014</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="projects-grid" id="projects-container">
+            <!-- Все карточки проектов здесь -->
+            <!-- 2025 Projects -->
+            <div class="project-card" data-categories="экономика" data-year="2025">
+              <div class="project-header">
+                <h3 class="project-title">Адаптация бизнеса к новой фискальной и кризисной реальности</h3>
+                <div class="project-tags">
+                  <span class="year-badge">2025</span>
+                  <span class="category-tag">экономика</span>
+                </div>
+              </div>
+              <p class="project-meta"><strong>Период:</strong> Октябрь 2025 г. (время подготовки 6,5 часов) | <strong>Роль:</strong> Независимый консультант</p>
+              <div class="project-content">
+                <div class="project-challenge">
+                  <h4>Задача / Контекст</h4>
+                  <p>Разработать комплексный прогноз и практические рекомендации для бизнеса в условиях одновременного воздействия фискальных реформ (повышение НДС до 22%, отмена льгот по страховым взносам), структурного кризиса на рынке топлива и энергетики, а также ужесточения денежно-кредитной политики.</p>
+                </div>
+                <div class="project-actions">
+                  <h4>Метод / Ключевые действия</h4>
+                  <ul>
+                    <li><strong>Выявлена синергия кризисов:</strong> налоговое давление + разрушение логистических цепочек (удары по 38% мощностей НПЗ) + стагнация рынка труда.</li>
+                    <li><strong>Построена двухсценарная модель</strong> (60% вероятность пессимистичного сценария «Взаимоусиление кризисов»).</li>
+                    <li><strong>Проведен отраслевой impact-анализ:</strong> определены наиболее уязвимые сектора (МСБ, IT, ритейл, логистика) и потенциальные бенефициары (сырьевой экспорт).</li>
+                  </ul>
+                </div>
+                <div class="project-result">
+                  <h4>Результат / Валидация</h4>
+                  <ul>
+                    <li><strong>Реструктуризация:</strong> Легальное дробление бизнеса для сохранения льготных налоговых режимов.</li>
+                    <li><strong>Логистика:</strong> Создание 3-6 месячных буферных запасов критических комплектующих и диверсификация маршрутов.</li>
+                    <li><strong>Кадры:</strong> Формирование формализованного реестра критически важных специалистов для защиты от мобилизационного давления и утечки кадров.</li>
+                  </ul>
+                </div>
+                <a href="https://github.com/victor-priss/portfolio/raw/refs/heads/main/adapt_business.docx" class="project-link">
+                  Читать полный текст анализа <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+
+           <!-- 2025 второй проект -->
+<div class="project-card" data-categories="экономика" data-year="2025">
+    <div class="project-header">
+        <h3 class="project-title">Стратегический обзор рынка женской одежды России для выхода китайского бренда</h3>
+        <div class="project-tags">
+            <span class="year-badge">2025</span>
+            <span class="category-tag">экономика</span>
+        </div>
+    </div>
+    <p class="project-meta"><strong>Период:</strong> 2025 г. (время подготовки 4 часа) | <strong>Роль:</strong> Независимый консультант по рыночной аналитике и стратегии выхода на рынок</p>
+    <div class="project-content">
+        <div class="project-challenge">
+            <h4>Задача / Контекст</h4>
+            <p>В сжатые сроки (4 часа) подготовить исчерпывающий стратегический обзор структуры, трендов и перспектив рынка женской одежды РФ для иностранного бренда, сформировав дорожную карту для быстрого старта.</p>
+        </div>
+        <div class="project-actions">
+            <h4>Метод / Ключевые действия</h4>
+            <ul>
+                <li><strong>Макроэкономический и демографический срез:</strong> Анализ покупательной способности (средняя з/п ~99 тыс. руб.), структуры расходов домохозяйств и географии размещения населения.</li>
+                <li><strong>Анализ структурного сдвига:</strong> Выявление последствий ухода западных брендов (2022) и перераспределения долей рынка в пользу Китая (~60%), Турции (~20-25%) и параллельного импорта.</li>
+                <li><strong>Выявление ключевых трендов (2024-2025):</strong> Сдвиг к «бюджетному премиуму», рост доли e-commerce до 40-50%, доминирование цифровых нативных брендов, ускорение fast-fashion.</li>
+                <li><strong>Анализ каналов дистрибуции:</strong> Определение доли и динамики ключевых каналов: онлайн-маркетплейсы (Wildberries, Ozon), розничные сети, мультибренды.</li>
+                <li><strong>Сценарное прогнозирование:</strong> Разработка трех сценариев развития рынка (базовый, оптимистичный, пессимистичный) с оценкой ежегодного роста.</li>
+            </ul>
+        </div>
+        <div class="project-result">
+            <h4>Результат / Валидация</h4>
+            <ul>
+                <li><strong>Создан готовый стратегический план для выхода:</strong> Документ содержит не общую информацию, а конкретные рекомендации по каналам (фокус на Wildberries/Ozon), ценовому сегменту (3-15 тыс. руб.) и товарным категориям (трикотаж, брюки, платья).</li>
+                <li><strong>Сделан вердикт о перспективности рынка:</strong> Несмотря на санкции, рынок признан растущим и перспективным для входа через онлайн-каналы с учетом специфики новых реалий.</li>
+                <li><strong>Продемонстрирована высокая скорость и глубина анализа:</strong> Работа, выполненная за 4 часа, по своей структуре и глубине соответствовала отчету аналитического департамента крупной компании.</li>
+            </ul>
+        </div>
+        <a href="#" class="project-link">Читать полный текст анализа</a>
+    </div>
+</div>
+
+<!-- 2024 проект -->
+<div class="project-card" data-categories="производство" data-year="2024">
+    <div class="project-header">
+        <h3 class="project-title">Оптимизация производственных процессов механосборочного участка</h3>
+        <div class="project-tags">
+            <span class="year-badge">2024</span>
+            <span class="category-tag">производство</span>
+        </div>
+    </div>
+    <p class="project-meta"><strong>Период:</strong> 2024 г. | <strong>Роль:</strong> Начальник участка / Системный аналитик</p>
+    <div class="project-content">
+        <div class="project-challenge">
+            <h4>Задача / Контекст</h4>
+            <p>Выявить системные причины низкой производительности и демотивации персонала на участке (40+ чел.).</p>
+        </div>
+        <div class="project-actions">
+            <h4>Метод / Ключевые действия</h4>
+            <p>· Проведен глубинный качественный анализ (15+ интервью с сотрудниками) по методу Customer Journey Map.</p>
+            <p>· Систематизированы все «точки боли» — от логистики инструмента до планирования заданий.</p>
+            <p>· Разработана «дорожная карта» изменений с приоритизацией по влиянию на результат.</p>
+        </div>
+        <div class="project-result">
+            <h4>Результат / Валидация</h4>
+            <p>Выявлены ключевые узкие места, устранение которых потенциально увеличит производительность на 20-30%.</p>
+            <p>Составлен исчерпывающий отчет-диагностика: Выявлено 10+ ключевых системных проблем с расчетом прямых финансовых потерь (например, 1 час/смену на бесполезные переходы).</p>
+            <p>Разработана архитектура преобразований: Предложены конкретные решения по технологическим, управленческим и цифровым аспектам.</p>
+        </div>
+        <a href="#" class="project-link">Читать полный текст анализа</a>
+    </div>
+</div>
+
+<!-- 2022 проект -->
+<div class="project-card" data-categories="безопасность политика" data-year="2022">
+    <div class="project-header">
+        <h3 class="project-title">Архитектура информационной устойчивости: Концепция противодействия в гибридной войне</h3>
+        <div class="project-tags">
+            <span class="year-badge">2022</span>
+            <span class="category-tag">безопасность</span>
+            <span class="category-tag">политика</span>
+        </div>
+    </div>
+    <p class="project-meta"><strong>Период:</strong> 2022 г. (подготовлено за 6 часов за 3 дня до начала СВО) | <strong>Роль:</strong> Архитектор систем управления / Кризис-менеджер</p>
+    <div class="project-content">
+        <div class="project-challenge">
+            <h4>Задача / Контекст</h4>
+            <p>В условиях нарастающей угрозы полномасштабного конфликта разработать комплексную модель перевода информационной политики с мирного на военный режим для предотвращения паники, хаоса и обеспечения управляемости.</p>
+        </div>
+        <div class="project-actions">
+            <h4>Метод / Ключевые действия</h4>
+            <p>Системный анализ угроз: Выделение 6 ключевых компонентов кризиса (паника, неопределенность, слухи, «белый шум», потери, самодискредитация) и моделирование их взаимодействия.</p>
+            <p>Разработка двухэтапной операционной модели с созданием Единого центра военной информации и организацией логистики.</p>
+        </div>
+        <div class="project-result">
+            <h4>Результат / Валидация</h4>
+            <p>Создана опережающая стратегическая модель: Концепция на 1-2 года предвосхитила реальные вызовы, с которыми столкнулись государственные органы в феврале-марте 2022 года.</p>
+        </div>
+        <a href="#" class="project-link">Читать полный текст анализа</a>
+    </div>
+</div>
+
+<!-- 2019 проект -->
+<div class="project-card" data-categories="логистика экономика" data-year="2019">
+    <div class="project-header">
+        <h3 class="project-title">Механизм выплат пенсий через МККК: Проектирование гуманитарной логистики</h3>
+        <div class="project-tags">
+            <span class="year-badge">2019</span>
+            <span class="category-tag">логистика</span>
+            <span class="category-tag">экономика</span>
+        </div>
+    </div>
+    <p class="project-meta"><strong>Период:</strong> 2019 г. (потрачено 4 часа) | <strong>Роль:</strong> Архитектор решения / Системный инженер</p>
+    <div class="project-content">
+        <div class="project-challenge">
+            <h4>Задача / Контекст</h4>
+            <p>В сжатые сроки разработать технически реализуемый и политически нейтральный механизм выплаты пенсий 1.8 млн жителей через Международный комитет Красного Креста (МККК) в условиях блокирования прямых выплат.</p>
+        </div>
+        <div class="project-actions">
+            <h4>Метод / Ключевые действия</h4>
+            <p>Системное проектирование: Разработка комплексной схемы, учитывающей юридические, финансовые и логистические аспекты взаимодействия с международной организацией.</p>
+            <p>Операционализация идеи: Перевод политической инициативы в детальный, пошаговый технический план.</p>
+            <p>Подготовка обоснования: Расчеты и аргументы для обеспечения финансирования и политической поддержки.</p>
+        </div>
+        <div class="project-result">
+            <h4>Результат / Валидация</h4>
+            <p>Проект не получил политической поддержки. Однако:</p>
+            <p>Создано готовое к реализации решение: За 4 часа подготовлен документ, с которым не справились профильные ведомства.</p>
+            <p>Получена экспертная оценка: Независимые эксперты признали техническую безупречность предложенной схемы.</p>
+            <p>Проект показал способность создавать работающие модели для сверхсложных, политизированных задач.</p>
+        </div>
+        <a href="#" class="project-link">Читать полный текст анализа</a>
+    </div>
+</div>
+
+<!-- 2018 проект -->
+<div class="project-card" data-categories="экономика" data-year="2018">
+    <div class="project-header">
+        <h3 class="project-title">Прогноз коллапса угольной промышленности: Отраслевой анализ в условиях кризиса</h3>
+        <div class="project-tags">
+            <span class="year-badge">2018</span>
+            <span class="category-tag">экономика</span>
+        </div>
+    </div>
+    <p class="project-meta"><strong>Период:</strong> 2018 г. (потрачено 6 выходных, 3 недели) | <strong>Роль:</strong> Независимый отраслевой аналитик / Стратег</p>
+    <div class="project-content">
+        <div class="project-challenge">
+            <h4>Задача / Контекст</h4>
+            <p>Провести комплексную диагностику состояния угольной промышленности региона после 2014 года, оценить риски и разработать прогноз развития отрасли при различных сценариях.</p>
+        </div>
+        <div class="project-actions">
+            <h4>Метод / Ключевые действия</h4>
+            <p>Анализ в условиях информационного вакуума: Проведение исследования на основе исключительно открытых источников из-за отсутствия доступа к официальной статистике.</p>
+            <p>Системная диагностика: Выявление ключевых проблем: хищническая эксплуатация активов, умышленная ликвидация стратегических шахт (особенно коксующихся), разрушение производственных цепочек, экологические риски.</p>
+            <p>Сценарное прогнозирование: Разработка прогноза, где базовым сценарием была дальнейшая деградации отрасли без кардинального изменения государственной политики.</p>
+        </div>
+        <div class="project-result">
+            <h4>Результат / Валидация</h4>
+            <p>Точный долгосрочный прогноз: Последующие 5 лет (2019-2024) полностью подтвердили негативный сценарий. Проблемы, обозначенные в 2018 году (износ фондов, потеря потенциала), не были решены и усугубились.</p>
+            <p>Предложена программа антикризисных мер: Разработаны конкретные шаги по стабилизации, ключевым из которых было создание вертикально-интегрированных структур.</p>
+            <p>Доказана возможность глубокого анализа без доступа к внутренним данным: Работа стала образцом методологии анализа в условиях ограничений.</p>
+        </div>
+        <!-- <a href="#" class="project-link">Читать полный текст анализа</a> -->
+    </div>
+</div>
+
+<!-- 2017 проект -->
+<div class="project-card" data-categories="безопасность политика" data-year="2017">
+    <div class="project-header">
+        <h3 class="project-title">Борьба за воду Донбасса: Анализ гибридной атаки на критическую инфраструктуру</h3>
+        <div class="project-tags">
+            <span class="year-badge">2017</span>
+            <span class="category-tag">безопасность</span>
+            <span class="category-tag">политика</span>
+        </div>
+    </div>
+    <p class="project-meta"><strong>Период:</strong> 2017 г. (потрачено 12 часов) | <strong>Роль:</strong> Системный аналитик</p>
+    <div class="project-content">
+        <div class="project-challenge">
+            <h4>Задача / Контекст</h4>
+            <p>Провести анализ систематических обстрелов объектов водоснабжения Донбасса (на примере Донецкой фильтровальной станции – ДФС), выявить их цели и спрогнозировать риски для разработки антикризисных мер.</p>
+        </div>
+        <div class="project-actions">
+            <h4>Метод / Ключевые действия</h4>
+            <p>Сбор и верификация данных: Систематизация данных о более чем 50 инцидентах вокруг ДФС из открытых источников (отчеты СЦКК, заявления КП «Вода Донбасса», мониторинг СММ ОБСЕ).</p>
+            <p>Хронологический и паттерн-анализ: Выявление неслучайности обстрелов, их привязка к политическому контексту (переговоры в Минске) и тактическим целям (занятие позиций ВСУ).</p>
+            <p>Выдвижение и проверка гипотез: Анализ опроверг версию о «случайных стычках» и подтвердил гипотезу о целенаправленной провокации с риском создания масштабной гуманитарной и экологической катастрофы.</p>
+            <p>Прогнозное моделирование: На основе выявленных паттернов спрогнозированы сценарии эскалации, в т.ч. риск провокации с химическими веществами (хлор на ДФС, Авдеевский коксохимзавод).</p>
+        </div>
+        <div class="project-result">
+            <h4>Результат / Валидация</h4>
+            <p>Доказана систематичность атак: Обстрелы ДФС были идентифицированы как элемент стратегии «ползучей деоккупации» и давления на гражданское население.</p>
+            <p>Разработан дипломатический план: Сформулированы конкретные шаги для международных организаций (ОБСЕ, СБ ООН) по принуждению сторон к соблюдению режима прекращения огня вокруг критической инфраструктуры.</p>
+            <p>Создана основа для переговоров: Аналитические материалы легли в основу официальной позиции на минских переговорах и использовались в течение 6 лет.</p>
+            <p>Подтверждение прогноза: Ход последующих событий (2018-2022 гг.) полностью подтвердил точность анализа и прогнозов.</p>
+        </div>
+    </div>
+</div>
+
+<!-- 2015 первый проект -->
+<div class="project-card" data-categories="образование экономика" data-year="2015">
+    <div class="project-header">
+        <h3 class="project-title">Системный анализ национальной модели интеграции науки, образования и производства</h3>
+        <div class="project-tags">
+            <span class="year-badge">2015</span>
+            <span class="category-tag">образование</span>
+            <span class="category-tag">экономика</span>
+        </div>
+    </div>
+    <p class="project-meta"><strong>Период:</strong> 2015 г. (потрачено 3 недели) | <strong>Роль:</strong> Аналитик-методолог</p>
+    <div class="project-content">
+        <div class="project-challenge">
+            <h4>Задача / Контекст</h4>
+            <p>Глубокий системный кризис и распад связей между ключевыми сферами (наука, образование, производство) на территории Донбасса, унаследованный от Украины. Угроза полной деиндустриализации и утраты научно-технического потенциала.</p>
+        </div>
+        <div class="project-actions">
+            <h4>Метод / Ключевые действия</h4>
+            <ul>
+                <li><strong>Разработана оригинальная сетевая модель системы «Наука-Образование-Производство»</strong> как совокупности 6 внутренних и 5 внешних связей (с государством, мировой наукой, глобализацией).</li>
+                <li><strong>Проведена диагностика по каждой связи</strong>, выявлены разорванные контуры (например, «Производство → Наука»: отсутствие заказа на НИОКР) и дисфункциональные.</li>
+                <li><strong>Построен инерционный сценарий</strong> (прогноз дальнейшей деградации при отсутствии реформ) и <strong>сценарий реформ</strong> с пакетом конкретных мер (от научно-практических конференций до создания выставок «Наука — производству»).</li>
+                <li><strong>Предложен поэтапный план действий</strong>, включающий ревизию кадров, исследование проблематики и адаптацию лучших мировых практик.</li>
+            </ul>
+        </div>
+        <div class="project-result">
+            <h4>Результат / Валидация</h4>
+            <p>Создана комплексная методология для диагностики и проектирования национальных научно-производственных систем. Модель показала высокую прогностическую силу: инерционный сценарий полностью подтвердился в последующие годы. Работа представляет собой готовый конструктор для системного восстановления реального сектора экономики.</p>
+        </div>
+    </div>
+</div>
+
+<!-- 2015 второй проект -->
+<div class="project-card" data-categories="образование политика" data-year="2015">
+    <div class="project-header">
+        <h3 class="project-title">Разработка концепции системы спортивно-патриотического воспитания для формирования гражданской идентичности</h3>
+        <div class="project-tags">
+            <span class="year-badge">2015</span>
+            <span class="category-tag">образование</span>
+            <span class="category-tag">политика</span>
+        </div>
+    </div>
+    <p class="project-meta"><strong>Период:</strong> 2015 г. (потрачено 24 часа)| <strong>Роль:</strong> Ведущий аналитик, модератор</p>
+    <div class="project-content">
+        <div class="project-challenge">
+            <h4>Задача / Контекст</h4>
+            <p>Идеологический вакуум и кризис легитимности новых государственных образований после распада прежней системы. Отсутствие объединяющей общество повестки и механизмов формирования патриотизма в условиях гибридной войны. Острая необходимость консолидации общества.</p>
+        </div>
+        <div class="project-actions">
+            <h4>Метод / Ключевые действия</h4>
+            <ul>
+                <li><strong>Проведено комплексное социологическое исследование</strong> (опрос населения) и серия экспертных интервью с руководителями военно-патриотических клубов, спортивных федераций и казачьих объединений.</li>
+                <li><strong>Организована и проведена дискуссионная площадка</strong> (круглый стол) с участием представителей министерств образования, спорта, культуры и общественности для выработки консенсуса.</li>
+                <li><strong>На основе анализа советского и мирового опыта</strong> выявлены ключевые риски (элитарность спорта, идеологическая перегруженность) и успешные практики (массовость, доступность инфраструктуры).</li>
+                <li><strong>Разработана межведомственная модель реализации</strong>, где конкретные задачи распределены между 10 министерствами и ведомствами (от Минфина — финансирование, до Минархитектуры — строительство спортивных объектов).</li>
+            </ul>
+        </div>
+        <div class="project-result">
+            <h4>Результат / Валидация</h4>
+            <p>Создана готовая к внедрению комплексная программа, переведшая тему патриотизма из области лозунгов в плоскость конкретных межведомственных действий. Концепция получила поддержку экспертного сообщества и легла в основу практических рекомендаций для органов власти. Проект демонстрирует способность работать с идеологически чувствительными темами и находить конструктивные, неспекулятивные решения.</p>
+        </div>
+    </div>
+</div>
+
+<!-- 2014 проект -->
+<div class="project-card" data-categories="политика безопасность" data-year="2014">
+    <div class="project-header">
+        <h3 class="project-title">Концепция информационно-идеологической безопасности и легитимации власти в условиях революционного кризиса</h3>
+        <div class="project-tags">
+            <span class="year-badge">2014</span>
+            <span class="category-tag">политика</span>
+            <span class="category-tag">безопасность</span>
+        </div>
+    </div>
+    <p class="project-meta"><strong>Период:</strong> август 2014 г. (потрачено 2 недели) | <strong>Роль:</strong> Системный аналитик, политический философ</p>
+    <div class="project-content">
+        <div class="project-challenge">
+            <h4>Задача / Контекст</h4>
+            <p>Острый кризис легитимности новой власти, вызванный «внутренней гражданской войной» в сознании ополчения и населения. Распространение манифестов, выражающих недоверие к руководству и грозящих внутренним взрывом на фоне внешней агрессии. Риск коллапса проекта государственности из-за идеологического вакуума.</p>
+        </div>
+        <div class="project-actions">
+            <h4>Метод / Ключевые действия</h4>
+            <p>· Проведен теоретический анализ природы власти и легитимности на основе трудов А. Кожева, выявивший четыре чистых типа власти (Отца, Господина, Вождя, Судьи) и их необходимое сочетание для устойчивости государства.</p>
+            <p>· Диагностировано отсутствие у новой власти трех ключевых типов (созидающего «Отца», стратегического «Вождя», справедливого «Судьи») при доминировании лишь одного — «Господина» (авторитета силы).</p>
+            <p>· Противник («Украина») рассмотрен как продукт успешной психо-исторической спецоперации по созданию «синтетической реальности», что задало высочайший уровень угрозы.</p>
+            <p>· Предложены три четких стратегических проекта будущего с оценкой рисков и информационными метафорами для каждого, как основа для выработки идеологии.</p>
+        </div>
+        <div class="project-result">
+            <h4>Результат / Валидация</h4>
+            <p>Создана рабочая онтологическая модель для диагностики устойчивости власти в условиях кризиса. Работа предвосхитила ключевую проблему последующих лет — отсутствие объединяющей идеологии. Проект демонстрирует способность применять фундаментальный философский аппарат для решения сиюминутных политических задач экстремальной сложности.</p>
+        </div>
+    </div>
+</div>
+            
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-light">
+      <div class="container">
+        <h2 class="section-title">Контакты</h2>
+        <div class="row">
+          <div class="col-lg-6 mx-auto">
+            <div class="contact-info">
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                  <h5>Email</h5>
+                  <p>vicking@list.ru</p>
+                </div>
+              </div>
+              
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fab fa-telegram"></i>
+                </div>
+                <div>
+                  <h5>Telegram</h5>
+                  <p>@vicking1917</p>
+                </div>
+              </div>
+              
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fab fa-github"></i>
+                </div>
+                <div>
+                  <h5>GitHub</h5>
+                  <p>github.com/victor-priss</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="social-links">
+          <a href="https://t.me/vicking1917" target="_blank"><i class="fab fa-telegram"></i></a>
+          <a href="https://github.com/victor-priss" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="mailto:vicking@list.ru" target="_blank"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p>&copy; 2025. Портфолио системного аналитика. Все права защищены.</p>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+      $(document).ready(function(){
+        // Smooth scrolling
+        $("a.nav-link").on('click', function(event) {
+          if (this.hash !== "") {
+            event.preventDefault();
+            var hash = this.hash;
+            $('html, body').animate({
+              scrollTop: $(hash).offset().top - 70
+            }, 800);
+          }
+        });
+        
+        // Navbar background change on scroll
+        $(window).scroll(function(){
+          if($(window).scrollTop() > 50) {
+            $('.navbar').addClass('navbar-scrolled');
+          } else {
+            $('.navbar').removeClass('navbar-scrolled');
+          }
+        });
+
+        // Filter functionality
+        let activeCategory = 'all';
+        let activeYear = 'all';
+
+        $('.filter-btn').on('click', function() {
+          $('.filter-btn').removeClass('active');
+          $(this).addClass('active');
+          activeCategory = $(this).data('filter');
+          filterProjects();
+        });
+
+        $('.year-btn').on('click', function() {
+          $('.year-btn').removeClass('active');
+          $(this).addClass('active');
+          activeYear = $(this).data('year');
+          filterProjects();
+        });
+
+        function filterProjects() {
+          $('.project-card').each(function() {
+            const categories = $(this).data('categories');
+            const year = $(this).data('year');
+            
+            const categoryMatch = activeCategory === 'all' || categories.includes(activeCategory);
+            const yearMatch = activeYear === 'all' || year == activeYear;
+            
+            if (categoryMatch && yearMatch) {
+              $(this).show();
+            } else {
+              $(this).hide();
+            }
+          });
+        }
+
+        // Initial sort - newest first
+        function sortProjects() {
+          const container = $('#projects-container');
+          const projects = container.children('.project-card').get();
+          
+          projects.sort((a, b) => {
+            return $(b).data('year') - $(a).data('year');
+          });
+          
+          $.each(projects, (index, project) => {
+            container.append(project);
+          });
+        }
+
+        sortProjects();
+      });
+    </script>
+  </body>
+</html>
